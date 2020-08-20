@@ -23,6 +23,14 @@ export default function App() {
     setProjects([...projects, project]);
   }
 
+  async function handleRemoveProject(id) {
+    await api.delete(`project/${id}`);
+    
+    setProjects(Projects.filter(
+      project => project.id !== id
+    ));
+  }
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor='#7159c1' />
